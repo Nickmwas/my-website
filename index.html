@@ -146,6 +146,11 @@
             font-size: 1rem;
             font-family: 'Product Sans', sans-serif;
         }
+        /* Style date picker indicator for dark mode browsers */
+        .booking-form input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
         .location-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -320,6 +325,8 @@
                     <option value="Other Inquiry">Other Inquiry</option>
                 </select>
 
+                <input type="date" id="appointmentDate" required>
+
                 <textarea id="details" rows="3" placeholder="Additional details or specific issues..."></textarea>
                 <button type="submit" class="cta-btn">Send Booking via WhatsApp</button>
             </form>
@@ -336,7 +343,6 @@
                 <br>
                 <p><strong>Sunday:</strong> Closed / Appointments Only</p>
                 <br>
-                
             </section>
             
             <div class="map-container">
@@ -361,10 +367,11 @@
             const make = document.getElementById('make').value;
             const model = document.getElementById('model').value;
             const service = document.getElementById('service').value;
+            const appointmentDate = document.getElementById('appointmentDate').value;
             const details = document.getElementById('details').value;
 
             const phone = "254706405560";
-            let message = `Hello Precision Performance Garage, I would like to book an appointment:%0A%0A- Vehicle Make: ${encodeURIComponent(make)}%0A- Vehicle Model: ${encodeURIComponent(model)}%0A- Service: ${encodeURIComponent(service)}`;
+            let message = `Hello Precision Performance Garage, I would like to book an appointment:%0A%0A- Vehicle Make: ${encodeURIComponent(make)}%0A- Vehicle Model: ${encodeURIComponent(model)}%0A- Service: ${encodeURIComponent(service)}%0A- Preferred Date: ${encodeURIComponent(appointmentDate)}`;
 
             if (details.trim() !== "") {
                 message += `%0A- Details: ${encodeURIComponent(details)}`;
@@ -375,5 +382,5 @@
     </script>
 
 </body>
-                                                     </html>
-                                                                                                  
+                </html>
+                    
