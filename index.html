@@ -97,16 +97,6 @@
             color: #fff;
             font-size: 1rem;
         }
-        .vehicle-fields {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        @media (max-width: 600px) {
-            .vehicle-fields {
-                grid-template-columns: 1fr;
-            }
-        }
         .location-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -217,40 +207,53 @@
         <h2 class="section-title">Book Service / Inquiry</h2>
         <section class="booking-section">
             <form class="booking-form" onsubmit="sendBooking(event)">
-                <div class="vehicle-fields">
-                    <select id="make" required>
-                        <option value="">Select Manufacturer</option>
-                        <option value="Subaru">Subaru</option>
-                        <option value="Toyota">Toyota</option>
-                        <option value="Nissan">Nissan</option>
-                        <option value="Mitsubishi">Mitsubishi</option>
-                        <option value="Mazda">Mazda</option>
-                        <option value="Honda">Honda</option>
-                        <option value="Volkswagen">Volkswagen</option>
-                        <option value="BMW">BMW</option>
-                        <option value="Mercedes-Benz">Mercedes-Benz</option>
-                        <option value="Audi">Audi</option>
-                        <option value="Ford">Ford</option>
-                        <option value="Isuzu">Isuzu</option>
-                        <option value="Hyundai">Hyundai</option>
-                        <option value="Kia">Kia</option>
-                        <option value="Lexus">Lexus</option>
-                        <option value="Land Rover / Range Rover">Land Rover / Range Rover</option>
-                        <option value="Peugeot">Peugeot</option>
-                        <option value="Renault">Renault</option>
-                        <option value="Suzuki">Suzuki</option>
-                        <option value="Volvo">Volvo</option>
-                        <option value="Porsche">Porsche</option>
-                        <option value="Chevrolet">Chevrolet</option>
-                        <option value="Jaguar">Jaguar</option>
-                        <option value="Jeep">Jeep</option>
-                        <option value="Mini">Mini</option>
-                        <option value="Alfa Romeo">Alfa Romeo</option>
-                        <option value="Fiat">Fiat</option>
-                        <option value="Other">Other / Custom Make</option>
-                    </select>
-                    <input type="text" id="model" placeholder="Model & Chassis (e.g., Forester SF5)" required>
-                </div>
+                <select id="vehicle" required>
+                    <option value="">Select Vehicle Manufacturer</option>
+                    <option value="Alfa Romeo">Alfa Romeo</option>
+                    <option value="Aston Martin">Aston Martin</option>
+                    <option value="Audi">Audi</option>
+                    <option value="Bentley">Bentley</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Bugatti">Bugatti</option>
+                    <option value="Cadillac">Cadillac</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                    <option value="Chrysler">Chrysler</option>
+                    <option value="Citroën">Citroën</option>
+                    <option value="Dodge">Dodge</option>
+                    <option value="Ferrari">Ferrari</option>
+                    <option value="Fiat">Fiat</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Genesis">Genesis</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Infiniti">Infiniti</option>
+                    <option value="Isuzu">Isuzu</option>
+                    <option value="Jaguar">Jaguar</option>
+                    <option value="Jeep">Jeep</option>
+                    <option value="Kia">Kia</option>
+                    <option value="Lamborghini">Lamborghini</option>
+                    <option value="Land Rover">Land Rover</option>
+                    <option value="Lexus">Lexus</option>
+                    <option value="Maserati">Maserati</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="McLaren">McLaren</option>
+                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                    <option value="MINI">MINI</option>
+                    <option value="Mitsubishi">Mitsubishi</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Peugeot">Peugeot</option>
+                    <option value="Porsche">Porsche</option>
+                    <option value="RAM">RAM</option>
+                    <option value="Renault">Renault</option>
+                    <option value="Rolls-Royce">Rolls-Royce</option>
+                    <option value="Subaru">Subaru</option>
+                    <option value="Suzuki">Suzuki</option>
+                    <option value="Tesla">Tesla</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Volkswagen">Volkswagen</option>
+                    <option value="Volvo">Volvo</option>
+                    <option value="Other / Custom Chassis">Other / Custom Chassis</option>
+                </select>
 
                 <select id="service" required>
                     <option value="">Select Service Required</option>
@@ -301,12 +304,10 @@
     <script>
         function sendBooking(e) {
             e.preventDefault();
-            const make = document.getElementById('make').value;
-            const model = document.getElementById('model').value;
+            const vehicle = document.getElementById('vehicle').value;
             const service = document.getElementById('service').value;
             const date = document.getElementById('date').value;
 
-            const vehicle = `${make} ${model}`;
             const phone = "254706405560";
             const message = `Hello Precision Performance Garage, I would like to book an appointment:%0A%0A- Vehicle: ${encodeURIComponent(vehicle)}%0A- Service: ${encodeURIComponent(service)}%0A- Preferred Date: ${encodeURIComponent(date)}`;
 
