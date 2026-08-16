@@ -31,13 +31,40 @@
             color: #e0e0e0;
             line-height: 1.6;
             padding-bottom: 70px;
+            overflow-x: hidden;
         }
+
+        /* --- Keyframe Animations --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 51, 51, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 51, 51, 0);
+            }
+        }
+
         header {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)), #1a1a1a;
             color: #fff;
             padding: 3rem 1.5rem;
             text-align: center;
             border-bottom: 3px solid #ff3333;
+            animation: fadeInUp 0.8s ease-out;
         }
         .logo-wrapper {
             max-width: 260px;
@@ -52,6 +79,10 @@
             max-height: 220px;
             object-fit: contain;
             display: block;
+            transition: transform 0.4s ease;
+        }
+        .header-logo:hover {
+            transform: scale(1.03);
         }
         header h1 {
             font-family: 'Deltha Regular', 'Product Sans', sans-serif;
@@ -81,6 +112,11 @@
             text-align: center;
             margin-bottom: 2rem;
             border: 1px solid #2a2a2a;
+            animation: fadeInUp 1s ease-out;
+            transition: border-color 0.3s ease;
+        }
+        .hero:hover {
+            border-color: #ff3333;
         }
         .services-grid {
             display: grid;
@@ -97,6 +133,14 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease, border-left-width 0.2s ease;
+            animation: fadeInUp 1.2s ease-out;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(255, 51, 51, 0.2);
+            border-left-width: 8px;
         }
         .card.maintenance-card {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('figureoutcarmaintenance.jpg');
@@ -119,6 +163,10 @@
         .card h3 {
             color: #fff;
             margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .card:hover h3 {
+            color: #ff3333;
         }
         .card p {
             color: #aaa;
@@ -130,6 +178,7 @@
             border-radius: 8px;
             border: 1px solid #2a2a2a;
             margin-bottom: 2.5rem;
+            animation: fadeInUp 1.4s ease-out;
         }
         .booking-form {
             display: grid;
@@ -145,6 +194,13 @@
             color: #fff;
             font-size: 1rem;
             font-family: 'Product Sans', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+        }
+        .booking-form input:focus, .booking-form select:focus, .booking-form textarea:focus {
+            outline: none;
+            border-color: #ff3333;
+            box-shadow: 0 0 8px rgba(255, 51, 51, 0.4);
+            transform: scale(1.01);
         }
         /* Style date picker indicator for dark mode browsers */
         .booking-form input[type="date"]::-webkit-calendar-picker-indicator {
@@ -156,12 +212,17 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
             margin-top: 1rem;
+            animation: fadeInUp 1.6s ease-out;
         }
         .contact-section {
             background: #1a1a1a;
             padding: 2rem;
             border-radius: 8px;
             border: 1px solid #2a2a2a;
+            transition: border-color 0.3s ease;
+        }
+        .contact-section:hover {
+            border-color: #ff3333;
         }
         .map-container {
             width: 100%;
@@ -169,6 +230,11 @@
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #2a2a2a;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .map-container:hover {
+            transform: scale(1.01);
+            border-color: #ff3333;
         }
         .map-container iframe {
             width: 100%;
@@ -190,6 +256,15 @@
             text-decoration: none;
             width: 100%;
             font-family: 'Product Sans', sans-serif;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+        .cta-btn:hover {
+            background-color: #1ebc57;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+        }
+        .cta-btn:active {
+            transform: translateY(0);
         }
         .section-title {
             color: #fff;
@@ -216,10 +291,19 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        .sticky-bar a:hover {
+            color: #ff3333;
+            transform: translateY(-2px);
         }
         .sticky-bar a i.fa-whatsapp {
             color: #ffffff;
             font-size: 1.1rem;
+            transition: color 0.2s ease;
+        }
+        .sticky-bar a:hover i.fa-whatsapp {
+            color: #25d366;
         }
         footer {
             text-align: center;
@@ -382,5 +466,5 @@
     </script>
 
 </body>
-                </html>
-                    
+    </html>
+    
