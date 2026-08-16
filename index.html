@@ -20,9 +20,15 @@
         header {
             background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), #1a1a1a;
             color: #fff;
-            padding: 4rem 1.5rem;
+            padding: 3rem 1.5rem;
             text-align: center;
             border-bottom: 3px solid #ff3333;
+        }
+        .header-logo {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 1rem;
+            display: inline-block;
         }
         header h1 {
             font-size: 2.8rem;
@@ -49,7 +55,7 @@
             margin-bottom: 2rem;
             border: 1px solid #2a2a2a;
         }
-        .services-grid, .gallery-grid {
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
@@ -69,24 +75,6 @@
         .card p {
             color: #aaa;
             font-size: 0.95rem;
-        }
-        .gallery-card {
-            background: #1a1a1a;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #2a2a2a;
-        }
-        .gallery-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-        .gallery-card p {
-            padding: 1rem;
-            color: #ccc;
-            font-size: 0.9rem;
-            text-align: center;
         }
         .booking-section {
             background: #1a1a1a;
@@ -189,6 +177,7 @@
 <body>
 
     <header>
+        <img src="logo.png" alt="Precision Performance Garage Logo" class="header-logo">
         <h1>Precision Performance Garage</h1>
         <p>Maintenance, Paint & Performance</p>
     </header>
@@ -196,7 +185,7 @@
     <div class="container">
         <section class="hero">
             <h2 class="section-title">Built for Performance & Reliability</h2>
-            <p>Your one-stop auto shop in for complete vehicle servicing, custom paintwork, modifications, and engine tuning.</p>
+            <p>Your one-stop auto shop in Utawala for complete vehicle servicing, custom paintwork, modifications, and engine tuning.</p>
         </section>
 
         <h2 class="section-title">Our Services</h2>
@@ -232,22 +221,6 @@
                 <button type="submit" class="cta-btn">Send Booking via WhatsApp</button>
             </form>
         </section>
-
-        <h2 class="section-title">Recent Builds & Projects</h2>
-        <div class="gallery-grid">
-            <div class="gallery-card">
-                <img src="https://via.placeholder.com/600x400/2a2a2a/ffffff?text=Engine+Tuning" alt="Engine Work">
-                <p>Engine Diagnostics & Performance Upgrades</p>
-            </div>
-            <div class="gallery-card">
-                <img src="https://via.placeholder.com/600x400/2a2a2a/ffffff?text=Custom+Paint" alt="Custom Paint">
-                <p>Full Body Spray Painting & Panel Beating</p>
-            </div>
-            <div class="gallery-card">
-                <img src="https://via.placeholder.com/600x400/2a2a2a/ffffff?text=Suspension+%26+Brakes" alt="Suspension Work">
-                <p>Suspension Overhaul & Custom Modifications</p>
-            </div>
-        </div>
 
         <h2 class="section-title">Find Us & Hours</h2>
         <div class="location-grid">
@@ -286,10 +259,9 @@
             const vehicle = document.getElementById('vehicle').value;
             const service = document.getElementById('service').value;
             const date = document.getElementById('date').value;
-            const details = document.getElementById('details').value;
 
-            const phone = "254706405560"; // Replace with real WhatsApp number
-            const message = `Hello Precision Performance Garage, I would like to book an appointment:%0A%0A- Vehicle: ${encodeURIComponent(vehicle)}%0A- Service: ${encodeURIComponent(service)}%0A- Preferred Date: ${encodeURIComponent(date)}%0A- Notes: ${encodeURIComponent(details)}`;
+            const phone = "254706405560";
+            const message = `Hello Precision Performance Garage, I would like to book an appointment:%0A%0A- Vehicle: ${encodeURIComponent(vehicle)}%0A- Service: ${encodeURIComponent(service)}%0A- Preferred Date: ${encodeURIComponent(date)}`;
 
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
