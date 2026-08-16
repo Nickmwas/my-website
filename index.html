@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Precision Performance Garage | Utawala</title>
     
+    <!-- Preload Logo Image for High Priority Loading -->
+    <link rel="preload" as="image" href="20260816_144847.webp" type="image/webp">
+
     <!-- Product Sans Font CDN -->
     <link href="https://fonts.cdnfonts.com/css/product-sans" rel="stylesheet">
     
@@ -206,7 +209,10 @@
 
     <header>
         <div class="logo-wrapper">
-            <img src="20260816_144847.png" alt="Precision Performance Logo" class="header-logo">
+            <picture>
+                <source srcset="20260816_144847.webp" type="image/webp">
+                <img src="20260816_144847.png" alt="Precision Performance Logo" class="header-logo" width="260" height="220" fetchpriority="high">
+            </picture>
         </div>
         <h1>Precision Performance Garage</h1>
         <p>Performance, Maintenance & Paint</p>
