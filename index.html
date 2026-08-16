@@ -15,6 +15,7 @@
             background-color: #0f0f0f;
             color: #e0e0e0;
             line-height: 1.6;
+            padding-bottom: 70px; /* Offset for sticky mobile bar */
         }
         header {
             background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), #1a1a1a;
@@ -87,6 +88,27 @@
             font-size: 0.9rem;
             text-align: center;
         }
+        .booking-section {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+            margin-bottom: 2.5rem;
+        }
+        .booking-form {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .booking-form input, .booking-form select, .booking-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background: #0f0f0f;
+            color: #fff;
+            font-size: 1rem;
+        }
         .location-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -113,14 +135,46 @@
             padding: 0.8rem 1.8rem;
             font-size: 1.1rem;
             font-weight: bold;
-            text-decoration: none;
+            border: none;
             border-radius: 5px;
-            margin-top: 1rem;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            width: 100%;
         }
         .section-title {
             color: #fff;
             margin-bottom: 1rem;
             font-size: 1.8rem;
+        }
+        .social-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .social-links a {
+            color: #ff3333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #111;
+            border-top: 2px solid #ff3333;
+            display: flex;
+            justify-content: space-around;
+            padding: 0.8rem;
+            z-index: 1000;
+        }
+        .sticky-bar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
         }
         footer {
             text-align: center;
@@ -161,6 +215,24 @@
             </div>
         </div>
 
+        <h2 class="section-title">Book Service / Inquiry</h2>
+        <section class="booking-section">
+            <form class="booking-form" onsubmit="sendBooking(event)">
+                <input type="text" id="vehicle" placeholder="Vehicle Make & Model (e.g., Subaru Forester SF5)" required>
+                <select id="service" required>
+                    <option value="">Select Service Required</option>
+                    <option value="General Maintenance / Service">General Maintenance / Service</option>
+                    <option value="Performance Modifications / Tuning">Performance Modifications / Tuning</option>
+                    <option value="Custom Paint & Bodywork">Custom Paint & Bodywork</option>
+                    <option value="Engine Diagnostics">Engine Diagnostics</option>
+                    <option value="Other Inquiry">Other Inquiry</option>
+                </select>
+                <input type="date" id="date" required>
+                <textarea id="details" rows="3" placeholder="Additional details or specific issues..."></textarea>
+                <button type="submit" class="cta-btn">Send Booking via WhatsApp</button>
+            </form>
+        </section>
+
         <h2 class="section-title">Recent Builds & Projects</h2>
         <div class="gallery-grid">
             <div class="gallery-card">
@@ -187,7 +259,6 @@
                 <p><strong>Sunday:</strong> Closed / Appointments Only</p>
                 <br>
                 <p><strong>Phone / WhatsApp:</strong> +254 700 000 000</p>
-                <a href="https://wa.me/254700000000?text=Hello%20Precision%20Performance%20Garage,%20I%20would%20like%20to%20inquire%20about%20a%20service." class="cta-btn" target="_blank">Book via WhatsApp</a>
             </section>
             
             <div class="map-container">
@@ -196,9 +267,33 @@
         </div>
     </div>
 
+    <div class="sticky-bar">
+        <a href="tel:+254700000000">📞 Call Shop</a>
+        <a href="https://wa.me/254700000000" target="_blank">💬 WhatsApp</a>
+    </div>
+
     <footer>
         <p>&copy; 2026 Precision Performance Garage, Utawala. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+            <a href="https://tiktok.com" target="_blank">TikTok</a>
+        </div>
     </footer>
+
+    <script>
+        function sendBooking(e) {
+            e.preventDefault();
+            const vehicle = document.getElementById('vehicle').value;
+            const service = document.getElementById('service').value;
+            const date = document.getElementById('date').value;
+            const details = document.getElementById('details').value;
+
+            const phone = "254700000000"; // Replace with real WhatsApp number
+            const message = `Hello Precision Performance Garage, I would like to book an appointment:%0A%0A- Vehicle: ${encodeURIComponent(vehicle)}%0A- Service: ${encodeURIComponent(service)}%0A- Preferred Date: ${encodeURIComponent(date)}%0A- Notes: ${encodeURIComponent(details)}`;
+
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+    </script>
 
 </body>
 </html>
