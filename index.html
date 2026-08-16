@@ -112,12 +112,9 @@
             cursor: pointer;
         }
         .date-picker-group {
-            display: none;
+            display: flex;
             flex-direction: column;
             gap: 0.4rem;
-        }
-        .date-picker-group.active {
-            display: flex;
         }
         .location-grid {
             display: grid;
@@ -240,12 +237,12 @@
                 </select>
 
                 <label class="checkbox-container">
-                    <input type="checkbox" id="hasAppointmentDate" onchange="toggleDatePicker(this)">
-                    Specify a specific appointment date
+                    <input type="checkbox" id="hasAppointmentDate" checked required>
+                    I confirm my requested appointment date
                 </label>
 
-                <div class="date-picker-group" id="dateGroup">
-                    <input type="date" id="date">
+                <div class="date-picker-group">
+                    <input type="date" id="date" required>
                 </div>
 
                 <textarea id="details" rows="3" placeholder="Additional details or specific issues..."></textarea>
@@ -285,34 +282,14 @@
     </footer>
 
     <script>
-        function toggleDatePicker(checkbox) {
-            const dateGroup = document.getElementById('dateGroup');
-            const dateInput = document.getElementById('date');
-            if (checkbox.checked) {
-                dateGroup.classList.add('active');
-                dateInput.required = true;
-            } else {
-                dateGroup.classList.remove('active');
-                dateInput.required = false;
-                dateInput.value = '';
-            }
-        }
-
         function sendBooking(e) {
             e.preventDefault();
             const vehicle = document.getElementById('vehicle').value;
             const service = document.getElementById('service').value;
-            const hasDate = document.getElementById('hasAppointmentDate').checked;
             const date = document.getElementById('date').value;
 
             const phone = "254706405560";
-            let message = `Hello Precision Performance Garage, I would like to book an appointment:%0A%0A- Vehicle: ${encodeURIComponent(vehicle)}%0A- Service: ${encodeURIComponent(service)}`;
-            
-            if (hasDate && date) {
-                message += `%0A- Preferred Date: ${encodeURIComponent(date)}`;
-            } else {
-                message += `%0A- Preferred Date: Flexible / To be agreed`;
-            }
+            const message = `Hello Precision Performance Garage, I would like to book an appointment:%0A%0A- Vehicle: ${encodeURIComponent(vehicle)}%0A- Service: ${encodeURIComponent(service)}%0A- Preferred Date: ${encodeURIComponent(date)}`;
 
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
