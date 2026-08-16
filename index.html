@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Precision Performance Garage | Utawala</title>
     <style>
+        @font-face {
+            font-family: 'Deltha Regular';
+            src: url('Deltha-Regular.woff2') format('woff2'),
+                 url('Deltha-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -39,6 +47,7 @@
             display: block;
         }
         header h1 {
+            font-family: 'Deltha Regular', 'Segoe UI', sans-serif;
             font-size: 2.8rem;
             color: #ffffff;
             text-transform: uppercase;
@@ -312,7 +321,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Precision Performance Garage </p>
+        <p>&copy; 2026 Precision Performance Garage</p>
         <div class="social-links">
             <a href="https://instagram.com" target="_blank">Instagram</a>
             <a href="https://tiktok.com" target="_blank">TikTok</a>
@@ -325,9 +334,14 @@
             const make = document.getElementById('make').value;
             const model = document.getElementById('model').value;
             const service = document.getElementById('service').value;
+            const details = document.getElementById('details').value;
 
             const phone = "254706405560";
-            const message = `Hello Precision Performance Garage, I would like to book an appointment:%0A%0A- Vehicle Make: ${encodeURIComponent(make)}%0A- Vehicle Model: ${encodeURIComponent(model)}%0A- Service: ${encodeURIComponent(service)}`;
+            let message = `Hello Precision Performance Garage, I would like to book an appointment:%0A%0A- Vehicle Make: ${encodeURIComponent(make)}%0A- Vehicle Model: ${encodeURIComponent(model)}%0A- Service: ${encodeURIComponent(service)}`;
+
+            if (details.trim() !== "") {
+                message += `%0A- Details: ${encodeURIComponent(details)}`;
+            }
 
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
