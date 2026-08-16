@@ -97,16 +97,6 @@
             color: #fff;
             font-size: 1rem;
         }
-        .date-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        @media (max-width: 600px) {
-            .date-group {
-                grid-template-columns: 1fr;
-            }
-        }
         .location-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -217,8 +207,8 @@
         <h2 class="section-title">Book Service / Inquiry</h2>
         <section class="booking-section">
             <form class="booking-form" onsubmit="sendBooking(event)">
-                <select id="vehicle" required>
-                    <option value="">Select Vehicle Manufacturer</option>
+                <select id="make" required>
+                    <option value="">Select Vehicle Manufacturer *</option>
                     <option value="Alfa Romeo">Alfa Romeo</option>
                     <option value="Aston Martin">Aston Martin</option>
                     <option value="Audi">Audi</option>
@@ -265,8 +255,10 @@
                     <option value="Other / Custom Chassis">Other / Custom Chassis</option>
                 </select>
 
+                <input type="text" id="model" placeholder="Vehicle Model (e.g., Forester SF5) *" required>
+
                 <select id="service" required>
-                    <option value="">Select Service Required</option>
+                    <option value="">Select Service Required *</option>
                     <option value="General Maintenance / Service">General Maintenance / Service</option>
                     <option value="Performance Modifications / Tuning">Performance Modifications / Tuning</option>
                     <option value="Custom Paint & Bodywork">Custom Paint & Bodywork</option>
@@ -274,18 +266,7 @@
                     <option value="Other Inquiry">Other Inquiry</option>
                 </select>
 
-                <div class="date-group">
-                    <select id="appointmentDay" required>
-                        <option value="">Select Preferred Day</option>
-                        <option value="Monday">Monday</option>
-                        <option value="Tuesday">Tuesday</option>
-                        <option value="Wednesday">Wednesday</option>
-                        <option value="Thursday">Thursday</option>
-                        <option value="Friday">Friday</option>
-                        <option value="Saturday">Saturday</option>
-                    </select>
-                    <input type="date" id="date" required>
-                </div>
+                <input type="date" id="date" required>
 
                 <textarea id="details" rows="3" placeholder="Additional details or specific issues..."></textarea>
                 <button type="submit" class="cta-btn">Send Booking via WhatsApp</button>
@@ -326,13 +307,13 @@
     <script>
         function sendBooking(e) {
             e.preventDefault();
-            const vehicle = document.getElementById('vehicle').value;
+            const make = document.getElementById('make').value;
+            const model = document.getElementById('model').value;
             const service = document.getElementById('service').value;
-            const day = document.getElementById('appointmentDay').value;
             const date = document.getElementById('date').value;
 
             const phone = "254706405560";
-            const message = `Hello Precision Performance Garage, I would like to book an appointment:%0A%0A- Vehicle: ${encodeURIComponent(vehicle)}%0A- Service: ${encodeURIComponent(service)}%0A- Preferred Day: ${encodeURIComponent(day)}%0A- Preferred Date: ${encodeURIComponent(date)}`;
+            const message = `Hello Precision Performance Garage, I would like to book an appointment:%0A%0A- Vehicle Make: ${encodeURIComponent(make)}%0A- Vehicle Model: ${encodeURIComponent(model)}%0A- Service: ${encodeURIComponent(service)}%0A- Preferred Date: ${encodeURIComponent(date)}`;
 
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
