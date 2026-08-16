@@ -97,6 +97,22 @@
             font-size: 1.2rem;
             margin-top: 0.5rem;
         }
+        .header-banner-photo {
+            max-width: 100%;
+            width: 600px;
+            height: auto;
+            margin: 1.5rem auto 0 auto;
+            border-radius: 8px;
+            border: 1px solid #333;
+            display: block;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .header-banner-photo:hover {
+            transform: scale(1.01);
+            border-color: #ff3333;
+        }
         .container {
             max-width: 1000px;
             margin: 2rem auto;
@@ -323,6 +339,7 @@
         </div>
         <h1>Precision Performance Garage</h1>
         <p>Performance, Maintenance & Paint</p>
+        <img src="1786914590317.jpg" alt="Precision Performance Garage Banner" class="header-banner-photo">
     </header>
 
     <div class="container">
