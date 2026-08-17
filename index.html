@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Search Engine Optimization (SEO) Tags -->
-<title>Precision Performance Garage | Custom Tuning & Auto Repair</title>
-<meta name="description" content="Expert automotive performance modifications, engine tuning, and custom garage services in [Your City Name].">
-<meta name="robots" content="index, follow">
-
-<!-- Open Graph tags for Facebook / WhatsApp sharing -->
-<meta property="og:title" content="Precision Performance Garage">
-<meta property="og:description" content="Expert automotive performance modifications and engine tuning.">
-<meta property="og:type" content="website">
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Precision Performance Garage | Utawala</title>
+    
+    <!-- Title & SEO Tags -->
+    <title>Precision Performance Garage | Custom Tuning & Auto Repair</title>
+    <meta name="description" content="Expert automotive performance modifications, engine tuning, general maintenance, and custom paint services in Utawala Githunguri, Nairobi.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Explicit Site Name Tags for Google Search Snippets -->
+    <meta property="og:site_name" content="Precision Performance Garage">
+    <meta name="application-name" content="Precision Performance Garage">
+
+    <!-- Open Graph tags for Facebook / WhatsApp sharing -->
+    <meta property="og:title" content="Precision Performance Garage | Utawala">
+    <meta property="og:description" content="Expert automotive performance modifications, maintenance, and custom paintwork.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://precision-performance-garage.github.io/">
+    <meta property="og:image" content="https://precision-performance-garage.github.io/IMG-20260128-WA0015(1).jpg">
+
+    <!-- Google Structured Data (JSON-LD) to define Site Name -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Precision Performance Garage",
+      "alternateName": "Precision Performance Garage Utawala",
+      "url": "https://precision-performance-garage.github.io/"
+    }
+    </script>
     
     <!-- Custom Favicon for Browser Tabs & History -->
     <link rel="icon" type="image/jpeg" href="IMG-20260128-WA0015(1).jpg">
@@ -486,16 +502,4 @@
             const details = document.getElementById('details').value;
 
             const phone = "254706405560";
-            let message = `Hello Precision Performance Garage, I would like to book an appointment:%0A%0A- Vehicle Make: ${encodeURIComponent(make)}%0A- Vehicle Model: ${encodeURIComponent(model)}%0A- Service: ${encodeURIComponent(service)}%0A- Preferred Date: ${encodeURIComponent(appointmentDate)}`;
-
-            if (details.trim() !== "") {
-                message += `%0A- Details: ${encodeURIComponent(details)}`;
-            }
-
-            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
-        }
-    </script>
-
-</body>
-                </html>
-    
+            let message = `Hello Precision Performance Garage, I would like to book an appointment:%0A%0A- Vehicle Make: ${encodeURIC
